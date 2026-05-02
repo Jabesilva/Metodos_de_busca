@@ -60,6 +60,21 @@ def save_output(open_list, visited):
     with open('output.json', 'w') as f:
         json.dump(data, f, indent=2)
 
+# ------------------------------------------------------------------
+# print_result
+# Exibe as métricas do enunciado no terminal.
+# ------------------------------------------------------------------
+def print_result(result, algorithm_name):
+    if result is None:
+        print("Sem solução.")
+        return
+    print(f"\n=== {algorithm_name} ===")
+    print(f"Caminho:          {' → '.join(result['path'])}")
+    print(f"Tamanho caminho:  {result['path_length']}")
+    print(f"Nodos visitados:  {result['visited']}")
+    print(f"Tempo:            {result['time']}s")
+    print(f"Maior fronteira:  {result['max_frontier']}")
+
 def reconstruct_path(came_from, goal_state):
     path = []
     state = goal_state

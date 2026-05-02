@@ -67,10 +67,10 @@ def is_solvable(state):
 
 
 # ------------------------------------------------------------------
-# print_board
+#
 # Exibe o tabuleiro formatado no terminal. Apenas para debug.
 # ------------------------------------------------------------------
-def print_board(state):
+def print_tabuleiro(state):
     for i in range(9):
         val = state[i] if state[i] != 0 else '_'
         end = '\n' if (i + 1) % 3 == 0 else ' '
