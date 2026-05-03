@@ -2,17 +2,8 @@
 
 goal = (1,2,3,4,5,6,7,8,0)
 
-# ------------------------------------------------------------------
-# get_vizinhos
 # Dado um estado, retorna todos os estados alcançáveis em 1 movimento.
 # Cada vizinho é uma tupla (novo_estado, direção_do_movimento).
-#
-# Lógica:
-#   1. new_col Encontra o índice do vazio (0) na tupla
-#   2. Converte índice → (linha, coluna)
-#   3. Para cada direção (cima/baixo/esq/dir), calcula a célula vizinha
-#   4. Se a célula existe no tabuleiro, troca vazio com ela
-# ------------------------------------------------------------------
 
 def get_vizinhos(state):
     i = state.index(0)
@@ -39,23 +30,14 @@ def get_vizinhos(state):
     
     return vizinhos
 
-# ------------------------------------------------------------------
-# is_goal
 # Verifica se o estado atual é a solução.
-# Simples comparação de tuplas — O(n).
-# ------------------------------------------------------------------
 
 def is_goal(state):
     return state == goal
 
-# ------------------------------------------------------------------
-# is_solvable
-# Nem todo tabuleiro embaralhado tem solução.
-# A regra: conta o número de inversões (par de peças fora de ordem).
+# Conta o número de inversões (par de peças fora de ordem).
 # Se o total for PAR → tem solução. Ímpar → não tem.
-#
-# Exemplo de inversão: 3 antes do 1 = 1 inversão (3 > 1).
-# ------------------------------------------------------------------
+
 def is_solvable(state):
     tiles = [x for x in state if x != 0]  # ignora o vazio
     inversions = sum(
@@ -66,10 +48,9 @@ def is_solvable(state):
     return inversions % 2 == 0
 
 
-# ------------------------------------------------------------------
-#
-# Exibe o tabuleiro formatado no terminal. Apenas para debug.
-# ------------------------------------------------------------------
+
+# Exibe o tabuleiro formatado no terminal.
+
 def print_tabuleiro(state):
     for i in range(9):
         val = state[i] if state[i] != 0 else '_'
